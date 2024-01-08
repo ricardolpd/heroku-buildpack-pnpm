@@ -5,7 +5,7 @@ warnings=$(mktemp -t heroku-buildpack-nodejs-XXXX)
 detect_package_manager() {
   case $YARN in
     true) echo "yarn";;
-    *) echo "npm";;
+  *) echo "pnpm";;
   esac
 }
 

@@ -102,11 +102,18 @@ meta_set "build-step" "init"
 [ -f "$BUILD_DIR/package-lock.json" ] && NPM_LOCK=true || NPM_LOCK=false
 YARN_2=$(detect_yarn_2 "$YARN" "$BUILD_DIR")
 
+debug() {
+  echo "Is yarn enabled: " $YARN
+  echo "Is pnpm enabled: " $PNPM
+  echo "Is npm enabled: " $NPM_LOCK
+}
+
+
 ### Save build info
 features_init "nodejs" "$BUILD_DIR" "$CACHE_DIR" "$BP_DIR/features"
 log_initial_state
 generate_uuids
-
+debug
 ### Failures that should be caught immediately
 
 fail_dot_heroku "$BUILD_DIR"
