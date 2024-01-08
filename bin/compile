@@ -388,7 +388,9 @@ prune_devdependencies() {
   if $YARN || $YARN_2; then
     yarn_prune_devdependencies "$BUILD_DIR" "$YARN_CACHE_FOLDER"
   elif $PNPM; then
+    echo "Space before pruning:" $(du -sh node_modules)
     pnpm_prune_devdependencies "$BUILD_DIR"
+    echo "Space after pruning:" $(du -sh node_modules)
   else
     npm_prune_devdependencies "$BUILD_DIR"
   fi
